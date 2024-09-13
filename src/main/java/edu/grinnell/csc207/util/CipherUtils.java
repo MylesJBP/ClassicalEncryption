@@ -1,4 +1,11 @@
 package edu.grinnell.csc207.util;
+/** 
+ * Author: Myles Bohrer-Purnell
+ * Course: CSC207 - Object Oriented Programming
+ * Mini-Project 1
+ * Instructor: Sam Rebelsky
+ * 9/12/2024
+ */
 
 public class CipherUtils {
   private static int letter2int(char letter) {
@@ -6,15 +13,15 @@ public class CipherUtils {
     for(int i = 0; i <= 25; i++){
       if(letter == alphabet[i]){
         return i;
-      }
-    }
+      } // if
+    } // for
     return -1; // STUB
-  }
+  } // letter2int
 
   private static char int2letter(int i) {
     char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     return alphabet[i];
-  }
+  } // int2letter
 
   public static String caesarEncrypt(String str, char letter) {
     int key;
@@ -22,10 +29,10 @@ public class CipherUtils {
     key = letter2int(letter);
     for(int i = 0; i < str.length(); i++){
       chars[i] = int2letter((letter2int(chars[i]) + key) % 26);
-    }
+    } // for
     str = new String(chars);
     return str; // STUB
-  }
+  } // caesarEncrypt
 
   public static String caesarDecrypt(String str, char letter) {
     int key;
@@ -36,32 +43,38 @@ public class CipherUtils {
       letDiff = (letter2int(chars[i]) - key) % 26;
       if(letDiff >= 0){
         chars[i] = int2letter(letDiff);
-      }
+      } // if
       else{
-        chars[i] = int2letter(-letDiff);
-      }
-    }
+        chars[i] = int2letter(26 + (letter2int(chars[i]) - key));
+      } // else
+    } // for
     str = new String(chars);
-    return str; // STUB
-  }
+    return str;
+  } // caesarDecrypt
 
   public static String vigenereEncrypt(String str, String key) {
     char[] keyCh = key.toCharArray();
     char[] chars = str.toCharArray();
     for(int i = 0; i < str.length(); i++){
       chars[i] = int2letter((letter2int(chars[i]) + letter2int(keyCh[i%key.length()])) % 26);
-    }
+    } // for
     str = new String(chars);
-    return str; // STUB
-  }
+    return str; 
+  } // vigenereEncrypt
 
   public static String vigenereDecrypt(String str, String key) {
     char[] keyCh = key.toCharArray();
     char[] chars = str.toCharArray();
     for(int i = 0; i < str.length(); i++){
-      chars[i] = int2letter((letter2int(chars[i]) - letter2int(keyCh[i%key.length()])) % 26);
-    }
+      int letDiff;
+      letDiff = (letter2int(chars[i]) - letter2int(keyCh[i%key.length()])) % 26;
+      if(letDiff >= 0){
+        chars[i] = int2letter(letDiff);
+      } else{
+        chars[i] = int2letter(26 + (letter2int(chars[i]) - letter2int(keyCh[i%key.length()])));
+      } // else
+    } // for
     str = new String(chars);
     return str; // STUB
-  }
-}
+  } // vigenereDecrpyt
+} // CipherUtils
