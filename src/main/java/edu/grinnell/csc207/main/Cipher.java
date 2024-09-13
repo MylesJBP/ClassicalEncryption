@@ -18,11 +18,11 @@ public class Cipher {
           return "encode";
         } else if (args[i].equals("-decode")){
           return "decode";
-        }
-      }
-    }
+        } // else if
+      } // if
+    } // for
     return "Invalid";
-  }
+  } // getED
 
   public static String getKey(String[] args){
     int count = 0;
@@ -30,24 +30,22 @@ public class Cipher {
       if(args[i].charAt(0) != '-'){
         if(count == 1){
           return args[i];
-        }
-        else{
+        } else{
           count += 1;
-        }
-      }
-    }
+        } // else
+      } // if
+    } // for
     return "Invalid";
-  }
+  } // getKey
 
   public static String getMess(String[] args){
     for(int i = 0; i < args.length; i++){
       if(args[i].charAt(0) != '-'){
         return args[i];
-      }
-    }
+      } // if
+    } // for
     return "Invalid";
-  }
-
+  } // getMess
 
   public static String getType(String[] args){
     for(int i = 0; i < args.length; i++){
@@ -56,9 +54,9 @@ public class Cipher {
           return "caesar";
         } else if (args[i].equals("-vigenere")){
           return "vigenere";
-        }
-      }
-    }
+        } // else if
+      } // if
+    } // for
     return "Invalid";
   } // getType
 
@@ -66,8 +64,7 @@ public class Cipher {
     PrintWriter pen = new PrintWriter(System.out, true);
     if(eOrD.equals("encode")){
       pen.printf("Key = %s \nEncrypted: %s\n", key, CipherUtils.vigenereEncrypt(message, key));
-    } // if
-    else{
+    } else{
       pen.printf("Key = %s \nDecrypted: %s\n", key, CipherUtils.vigenereDecrypt(message, key));
     } // else
     pen.close();
@@ -77,8 +74,7 @@ public class Cipher {
     PrintWriter pen = new PrintWriter(System.out, true);
     if(eOrD.equals("encode")){
       pen.printf("Key = %c \nEncrpyted: %s\n", key, CipherUtils.caesarEncrypt(message, key));
-    } // if
-    else{
+    } else{
       pen.printf("Key = %c \nDecrypted: %s\n", key, CipherUtils.caesarDecrypt(message, key));
     } // else
     pen.close();
@@ -98,14 +94,12 @@ public class Cipher {
 
       if(eOrd.equals("Invalid") || message.equals("Invalid") || key.equals("Invalid") || type.equals("Invalid")){
         System.err.println("Error: Invalid Input");
-      }
-      else if(type.equals("vigenere")){
+      } else if(type.equals("vigenere")){
         Vigenere(eOrd, key, message);
       } else {
         if(key.length() > 1){
           System.err.println("Error: Key Must be 1 Character");
-        }
-        else{
+        } else{
           keyC = key.charAt(0);
           Caesar(eOrd, keyC, message);
         }
