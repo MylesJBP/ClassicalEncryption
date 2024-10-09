@@ -1,17 +1,16 @@
 package edu.grinnell.csc207;
 
-import edu.grinnell.csc207.util.CipherUtils;
-import edu.grinnell.csc207.main.AllCaesar;
-import edu.grinnell.csc207.main.Cipher;
-
-import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import edu.grinnell.csc207.main.AllCaesar;
+import edu.grinnell.csc207.main.Cipher;
+import edu.grinnell.csc207.util.CipherUtils;
 
 /**
  * Tests of the various classes for MP01.
