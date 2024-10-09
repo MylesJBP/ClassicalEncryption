@@ -1,0 +1,27 @@
+# Changes Checklist for MP1 Redo
+Myles Bohrer-Purnell
+CSC-207 2024Fa
+Samuel Rebelsky
+---
+1. The comments for my initial submission of MP1 were as follows:
+Make sure you check your code for formatting using `mvn checkstyle:check -q`,
+there were a lot of checkstyle errors.
+
+SOLUTION: 
+I fixed this issue by going through the checklist of checkstyle errors using
+`mvn checkstyle:check -q` and adding/changing the required material. This included
+adding javadoc segments for all of my methods, removing blank spaces after code lines, 
+adding/removing spaces before/after operators or comparators, and removing "magic numbers".
+This proccess spanned all of my files. The result is that there are no longer any checkstyle
+errors in my code.
+
+2. You had 7 tests that failed (gave the wrong output) & 2 tests that
+had errors where the index was out of bounds so make sure you
+handle edge cases well! Make sure you test your code using
+`mvn test` before you submit it.
+
+SOLUTION:
+I fixed this issue by going back through my code and changing output of the Caesar file to print nothing
+when the input in invalid (producing null, the desired output), and adding "Error: " before one of my error
+messages in AllCaesar. I also realized that I wasn't checking if the message or key was valid in Caesar, so I added code to check that.
+These changes resulted in my code producing no errors using the provided tests.
